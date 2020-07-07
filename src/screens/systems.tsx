@@ -7,7 +7,7 @@ const BallMove = (entities, { time }) => {
   Matter.Engine.update(engine, time.delta);
 
   let mouse = entities.mouse;
-  console.log(mouse);
+  // console.log(mouse);
 
   return { ...entities, engine: engine };
 };
