@@ -3,9 +3,9 @@ import { View, Text, Dimensions } from 'react-native';
 
 
 interface MouseProps {
-  body: { position: { x: number, y: number } },
-  color: any,
-  size: number
+  body: { position: { x: number, y: number } };
+  color: any;
+  size: number;
 }
 
 const Mouse: React.FC<MouseProps> = ({ body, color, size }) => {

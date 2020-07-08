@@ -4,7 +4,7 @@ import { GameEngine } from "react-native-game-engine";
 import Matter from "matter-js";
 import DPad from '../components/DPad';
 import { BALL_SIZE } from './constants';
-import { Snake } from '../components/Snake';
+import Snake from '../components/Snake';
 import { BallMove } from './systems';
 
 const screenDims = Dimensions.get('window');
@@ -55,10 +55,10 @@ const Home: React.FC = () => {
     Matter.Body.setVelocity(snake, { x: 1, y: 0 });
 
     Matter.Events.on(engine, 'collisionStart', event => {
-      var pairs = event.pairs;
+      const pairs = event.pairs;
 
-      var objA = pairs[0].bodyA.label;
-      var objB = pairs[0].bodyB.label;
+      const objA = pairs[0].bodyA.label;
+      const objB = pairs[0].bodyB.label;
 
       if (objA == 'ball' && objB == 'mouse') {
         // Detects collision between the top wall and ball, player 1 scores
