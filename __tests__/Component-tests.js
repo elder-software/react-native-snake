@@ -13,29 +13,21 @@ import renderer from 'react-test-renderer';
 // });
 
 test('DPad Snapshot', () => {
-  const tree = renderer.create(<DPad />).toJSON();
-  expect(tree).toMatchSnapshot();
+    const tree = renderer.create(<DPad />).toJSON();
+    expect(tree).toMatchSnapshot();
 });
 
 test('Mouse Snapshot', () => {
-  const position = [100, 100];
+    const position = [100, 100];
 
-  const tree = renderer.create(
-    <Mouse
-      body={{ position }}
-    />
-  ).toJSON();
+    const tree = renderer.create(<Mouse body={{position}} />).toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
 });
 
 test('Snake Snapshot', () => {
-  const position = [100, 100];
+    const position = [100, 100];
 
-  const tree = renderer.create(
-    <Snake
-      body={{ position }}
-    />
-  ).toJSON();
-  expect(tree).toMatchSnapshot();
+    const tree = renderer.create(<Snake body={{position}} />).toJSON();
+    expect(tree).toMatchSnapshot();
 });

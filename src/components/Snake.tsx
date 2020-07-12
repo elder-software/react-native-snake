@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View } from "react-native";
 
 /**
  * Used to draw circles within the react native game engine and matter.js
@@ -8,9 +8,9 @@ import { View } from 'react-native';
  */
 
 interface SnakeProps {
-  body: { position: { x: number, y: number } },
-  color: any,
-  size: number
+  body: { position: { x: number, y: number } };
+  color: string | undefined;
+  size: number;
 }
 
 const Snake: React.FC<SnakeProps> = ({ body, color, size }) => {

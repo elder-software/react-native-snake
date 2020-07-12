@@ -3,7 +3,7 @@ import { View, Text, Dimensions } from 'react-native';
 import { GameEngine } from "react-native-game-engine";
 import Matter from "matter-js";
 import DPad from '../components/DPad';
-import { BALL_SIZE } from './constants';
+import { SNAKE_SIZE } from './constants';
 import Snake from '../components/Snake';
 import { BallMove } from './systems';
 
@@ -20,17 +20,17 @@ const snakeSettings = {
 export const snake = Matter.Bodies.circle(
   screenDims.width / 2,
   screenDims.width / 2,
-  BALL_SIZE / 2,
+  SNAKE_SIZE / 2,
   {
     ...snakeSettings,
-    label: 'ball'
+    label: 'snake'
   }
 );
 
 export const mouse = Matter.Bodies.circle(
   screenDims.width / 2,
   screenDims.width / 2 + 30,
-  BALL_SIZE / 2,
+  SNAKE_SIZE / 2,
   {
     ...snakeSettings,
     label: 'mouse'
@@ -50,6 +50,7 @@ Matter.World.add(world, [
 
 const Home: React.FC = () => {
   console.log(screenDims);
+  const [score, setScore] = React.useState<number>(0);
 
   useEffect(() => {
     Matter.Body.setVelocity(snake, { x: 1, y: 0 });
@@ -60,16 +61,15 @@ const Home: React.FC = () => {
       const objA = pairs[0].bodyA.label;
       const objB = pairs[0].bodyB.label;
 
-      if (objA == 'ball' && objB == 'mouse') {
-        // Detects collision between the top wall and ball, player 1 scores
-        // Increments player 1 score and restarts the ball with start position/velocity
+      if (objA == 'snake' && objB == 'mouse') {
+        // Detects collision between snake and mouse
         Matter.Body.setPosition(mouse, {
-          x: 30,
-          y: 30
+          x: Math.floor(Math.random() * screenDims.width),
+          y: Math.floor(Math.random() * screenDims.width)
         });
       }
     });
-  });
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>
@@ -83,13 +83,13 @@ const Home: React.FC = () => {
             },
             snake: {
               body: snake,
-              size: BALL_SIZE,
+              size: SNAKE_SIZE,
               color: '#ffffff',
               renderer: Snake
             },
             mouse: {
               body: mouse,
-              size: BALL_SIZE,
+              size: SNAKE_SIZE,
               color: '#ffffff',
               renderer: Snake
             },

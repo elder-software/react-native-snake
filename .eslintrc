@@ -7,7 +7,16 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-native/recommended"
   ],
-  "rules": { }
+  "rules": {
+    "no-unused-expressions": 2,
+    "no-unused-vars": 2,
+    "max-lines": [
+      "error",
+      100
+    ],
+    "semi": 2
+  }
 }
